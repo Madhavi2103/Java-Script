@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Data Entry</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #dbeafe, #fce7f3);
+            min-height: 100vh;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            animation: slideDown 1s ease;
+        }
+
+        h2 {
+            color: #1e3a8a;
+            margin-top: 35px;
+            animation: slideDown 1s ease;
+        }
+
+        .form-box {
+            width: 400px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            animation: slideLeft 1s ease;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+            outline: none;
+        }
+
+        button {
+            margin-top: 18px;
+            padding: 11px 28px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            animation: fadeIn 1.2s ease;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #eff6ff;
+            transition: 0.3s;
+        }
+
+        .new-row {
+            animation: rowAppear 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rowAppear {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Data Entry</h1>
+
+    <div class="form-box">
+
+        <label>Student Name:</label>
+        <input type="text" id="name">
+
+        <label>Student ID:</label>
+        <input type="text" id="id">
+
+        <label>Age:</label>
+        <input type="number" id="age">
+
+        <label>Gender:</label>
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Grade:</label>
+        <select id="grade">
+            <option value="">Select Grade</option>
+            <option value="O">O</option>
+            <option value="A++">A++</option>
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="F">F</option>
+        </select>
+
+        <button onclick="addStudent()">Submit</button>
+
+    </div>
+
+    <h2>Student List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Student ID</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentList">
+        </tbody>
+    </table>
+
+
+    <script>
+
+        function addStudent() {
+
+            let name = document.getElementById("name").value;
+            let id = document.getElementById("id").value;
+            let age = document.getElementById("age").value;
+            let gender = document.getElementById("gender").value;
+            let grade = document.getElementById("grade").value;
+
+            if (name == "" || id == "" || age == "" ||
+                gender == "" || grade == "") {
+
+                alert("Please fill all the details");
+                return;
+            }
+
+            let table = document.getElementById("studentList");
+
+            let row = table.insertRow();
+
+            row.classList.add("new-row");
+
+            row.insertCell(0).innerHTML = name;
+            row.insertCell(1).innerHTML = id;
+            row.insertCell(2).innerHTML = age;
+            row.insertCell(3).innerHTML = gender;
+            row.insertCell(4).innerHTML = grade;
+
+            document.getElementById("name").value = "";
+            document.getElementById("id").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("gender").value = "";
+            document.getElementById("grade").value = "";
+        }
+
+    </script>
+
+</body>
+</html>
+
