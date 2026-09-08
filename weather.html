@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="weather-container">
+
+        <h1>🌤️ Weather App</h1>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter city name"
+            >
+
+            <button onclick="getWeather()">Search</button>
+        </div>
+
+        <p id="error" class="error"></p>
+
+        <div class="weather-card" id="weatherCard">
+
+            <h2 id="cityName">City</h2>
+
+            <div class="temperature" id="temperature">
+                0°C
+            </div>
+
+            <div class="description" id="description">
+                Weather
+            </div>
+
+            <div class="weather-details">
+
+                <div class="detail-box">
+                    💧 Humidity
+                    <span id="humidity">--%</span>
+                </div>
+
+                <div class="detail-box">
+                    🌡️ Feels Like
+                    <span id="feelsLike">--°C</span>
+                </div>
+
+                <div class="detail-box">
+                    🔽 Minimum
+                    <span id="minTemp">--°C</span>
+                </div>
+
+                <div class="detail-box">
+                    🔼 Maximum
+                    <span id="maxTemp">--°C</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="javascript.js"></script>
+
+</body>
+</html>
+
